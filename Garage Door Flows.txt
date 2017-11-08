@@ -637,7 +637,7 @@
         "type": "comment",
         "z": "b58cb79e.21c2b8",
         "name": "ESP Setup Instructions",
-        "info": "Use Pete's YAT terminal program.\nConnect your Wemos Mini to your \ncomputer, open YAT and connect to the\nboard.\n\nEnter the commands into YAT one at a time\nfor your particular setup (See page 11 \nand 12 of Petes documentation):\n\n{ssid:\"wififorus\"}\n{ssid2:\"wififorus\"}\n{pass:\"xxxxxxxxxxx\"}\n{pass2:\"xxxxxxxxxxx\"}\n{mqtt_host:\"192.168.1.19\"}\n{mqtt_user:\"xxxxxx\"}\n{mqtt_pass:\"xxxxxx\"}\n\nNOTE: If you change the ID to anything\n      other than \"garage\", you will need\n      to make sure to change the topics\n      under the Garage Door Flow for\n      the \"Garage\" button and\n      \"Complete OPEN\", and \n      \"Complete CLOSED\"\n      MQTT inputs\n      \n{id:”garage”}\n{desc:\"Garage Door\"}\n{rgb_ind:0}\n\nAlso per page 14 (Automatic Responses)\nto allow GPIO2 (D4 on Wemos Mini)\nto be used:\n{temperature_port:0} \n{temp_type:6}\n\nAnd if you would like ot set a \nmanual IP then (see page 66):\n{manual_ip:1,192,168,1,200,2} \n\nThen reset (reboot) the board:\n{reset}\n\n\n\nThe first set is to set your Wifi SSID and\npassword.\n\nNext group is to set the MQTT Broker\n\nThird set (Enabling GPI02) is so that you\ncan use GPI02 as an input. (On my Wemos Mini,\nit is D4)\n\nThe last group is for testing some of the pins\n",
+        "info": "Use Pete's YAT terminal program.\nConnect your Wemos Mini to your \ncomputer, open YAT and connect to the\nboard.\n\nEnter the commands into YAT one at a time\nfor your particular setup (See page 11 \nand 12 of Petes documentation):\n\n{ssid:\"wififorus\"}\n{ssid2:\"wififorus\"}\n{pass:\"xxxxxxxxxxx\"}\n{pass2:\"xxxxxxxxxxx\"}\n{mqtt_host:\"192.168.1.19\"}\n{mqtt_user:\"xxxxxx\"}\n{mqtt_pass:\"xxxxxx\"}\n\nNOTE: If you change the ID to anything\n      other than \"garage\", you will need\n      to make sure to change the topics\n      under the Garage Door Flow for\n      the \"Garage\" button and\n      \"Complete OPEN\", and \n      \"Complete CLOSED\"\n      MQTT inputs\n      \n{id:Â”garageÂ”}\n{desc:\"Garage Door\"}\n{rgb_ind:0}\n\nAlso per page 14 (Automatic Responses)\nto allow GPIO2 (D4 on Wemos Mini)\nto be used:\n{temperature_port:0} \n{temp_type:6}\n\nAnd if you would like ot set a \nmanual IP then (see page 66):\n{manual_ip:1,192,168,1,200,2} \n\nThen reset (reboot) the board:\n{reset}\n\n\n\nThe first set is to set your Wifi SSID and\npassword.\n\nNext group is to set the MQTT Broker\n\nThird set (Enabling GPI02) is so that you\ncan use GPI02 as an input. (On my Wemos Mini,\nit is D4)\n\nThe last group is for testing some of the pins\n",
         "x": 300,
         "y": 100,
         "wires": []
@@ -664,7 +664,7 @@
         "type": "mqtt in",
         "z": "6c0230dc.948c1",
         "name": "From ESP Board",
-        "topic": "fromesp",
+        "topic": "esplogon",
         "qos": "2",
         "broker": "10e13cb9.3e3033",
         "x": 120,
