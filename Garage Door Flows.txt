@@ -1,0 +1,755 @@
+[
+    {
+        "id": "6c0230dc.948c1",
+        "type": "tab",
+        "label": "Garage Door"
+    },
+    {
+        "id": "b58cb79e.21c2b8",
+        "type": "tab",
+        "label": "ESP Setup",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "10e13cb9.3e3033",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "192.168.0.20",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "7fb4896e.d7a448",
+        "type": "ui_group",
+        "z": "",
+        "name": "Garage Door",
+        "tab": "559b043a.32885c",
+        "order": 1,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "559b043a.32885c",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Garage",
+        "icon": "dashboard",
+        "order": 2
+    },
+    {
+        "id": "5ab7abc6.eef384",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "c3ccc3a6.bdcd7",
+        "type": "trigger",
+        "z": "6c0230dc.948c1",
+        "op1": "{out4:1}",
+        "op2": "{out4:0}",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "500",
+        "extend": false,
+        "units": "ms",
+        "reset": "",
+        "name": "Trigger Relay",
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "a62e8ce9.f8995"
+            ]
+        ]
+    },
+    {
+        "id": "2b979f64.afb82",
+        "type": "mqtt in",
+        "z": "6c0230dc.948c1",
+        "name": "Complete CLOSED",
+        "topic": "garage/fromesp/trigger14",
+        "qos": "2",
+        "broker": "10e13cb9.3e3033",
+        "x": 130,
+        "y": 520,
+        "wires": [
+            [
+                "12c3a059.4fd6b"
+            ]
+        ]
+    },
+    {
+        "id": "d8ab7d0f.8f883",
+        "type": "ui_text",
+        "z": "6c0230dc.948c1",
+        "group": "7fb4896e.d7a448",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 970,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "24dd5f56.db6b7",
+        "type": "e-mail",
+        "z": "6c0230dc.948c1",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "name": "yourname@gmail.com",
+        "dname": "Email/Text Me",
+        "x": 980,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "a4aea44e.00b778",
+        "type": "ui_button",
+        "z": "6c0230dc.948c1",
+        "name": "",
+        "group": "7fb4896e.d7a448",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Garage",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "garage/toesp",
+        "x": 80,
+        "y": 100,
+        "wires": [
+            [
+                "c3ccc3a6.bdcd7"
+            ]
+        ]
+    },
+    {
+        "id": "7291327d.6f737c",
+        "type": "esplogin",
+        "z": "6c0230dc.948c1",
+        "name": "garage",
+        "lat": "27.3693102",
+        "lon": "-81.6915615",
+        "start": "sunrise",
+        "end": "sunset",
+        "duskoff": "0",
+        "dawnoff": "0",
+        "x": 300,
+        "y": 160,
+        "wires": [
+            [
+                "a62e8ce9.f8995"
+            ],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "213fdbd9.3dc1a4",
+        "type": "mqtt in",
+        "z": "6c0230dc.948c1",
+        "name": "Complete OPEN",
+        "topic": "garage/fromesp/trigger2",
+        "qos": "2",
+        "broker": "10e13cb9.3e3033",
+        "x": 120,
+        "y": 420,
+        "wires": [
+            [
+                "d40fb072.abe0c"
+            ]
+        ]
+    },
+    {
+        "id": "d40fb072.abe0c",
+        "type": "switch",
+        "z": "6c0230dc.948c1",
+        "name": "Open or Closed",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 320,
+        "y": 420,
+        "wires": [
+            [
+                "d109457c.035798"
+            ],
+            [
+                "d8953f57.2d014"
+            ]
+        ]
+    },
+    {
+        "id": "12c3a059.4fd6b",
+        "type": "switch",
+        "z": "6c0230dc.948c1",
+        "name": "Open or Closed",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 340,
+        "y": 520,
+        "wires": [
+            [
+                "bdc587df.cffed8"
+            ],
+            [
+                "30847bb4.7f5d94"
+            ]
+        ]
+    },
+    {
+        "id": "d109457c.035798",
+        "type": "function",
+        "z": "6c0230dc.948c1",
+        "name": "Closing",
+        "func": "// Set Status\n// 0 = Door Closing or Closed\nflow.set(\"openStatus\", 0);\n\nvar newMsg = { payload: \"Closing\" };\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540,
+        "y": 400,
+        "wires": [
+            [
+                "4fdc6d39.ad7184"
+            ]
+        ]
+    },
+    {
+        "id": "165583f2.c1ba9c",
+        "type": "config",
+        "z": "6c0230dc.948c1",
+        "name": "Initial Door State",
+        "properties": [
+            {
+                "p": "closedStatus",
+                "pt": "flow",
+                "to": "1",
+                "tot": "num"
+            },
+            {
+                "p": "openStatus",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "active": true,
+        "x": 120,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d8953f57.2d014",
+        "type": "function",
+        "z": "6c0230dc.948c1",
+        "name": "OPEN",
+        "func": "// Set Door to completly OPEN\nflow.set(\"openStatus\", 1);\nflow.set(\"closedStatus\", 0);\n\n// Save the time the Door was completly OPEN\n// This allows us to send email if \n// the door is OPEN to long.\nvar d = new Date();\nvar tHour = d.getHours();\nvar tMin = d.getMinutes();\nvar timeOpen = (tHour * 60) + tMin;\nflow.set(\"timeOpen\",timeOpen);\n\n// Return OPEN\nvar newMsg = { payload: \"Open\" };\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 440,
+        "wires": [
+            [
+                "4fdc6d39.ad7184"
+            ]
+        ]
+    },
+    {
+        "id": "bdc587df.cffed8",
+        "type": "function",
+        "z": "6c0230dc.948c1",
+        "name": "Opening",
+        "func": "// Set Closed Status\n// 0 = Door is Opening or Open\nflow.set(\"closedStatus\", 0);\n\nvar newMsg = { payload: \"Opening\" };\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540,
+        "y": 500,
+        "wires": [
+            [
+                "4fdc6d39.ad7184"
+            ]
+        ]
+    },
+    {
+        "id": "30847bb4.7f5d94",
+        "type": "function",
+        "z": "6c0230dc.948c1",
+        "name": "CLOSED",
+        "func": "// Set Status that Door is CLOSED\nflow.set(\"closedStatus\", 1);\nflow.set(\"openStatus\", 0);\n\nvar newMsg = { payload: \"Closed\" };\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540,
+        "y": 540,
+        "wires": [
+            [
+                "4fdc6d39.ad7184"
+            ]
+        ]
+    },
+    {
+        "id": "4fdc6d39.ad7184",
+        "type": "function",
+        "z": "6c0230dc.948c1",
+        "name": "Report Door Status",
+        "func": "// Get the current state of the Door\nvar doorClosed = flow.get(\"closedStatus\");\nvar doorOpen = flow.get(\"openStatus\");\n\n// If the Door is closed the pass \"Door Closed\"\nif(doorClosed==1)\n{\n    var newMsg = { payload: \"Door Closed\" };\n    return newMsg;\n}\n// Otherwise if Door is open pass \"Door Open\"\nelse if (doorOpen==1)\n{\n    var newMsg = { payload: \"Door Open\" };\n    return newMsg;\n}\nelse\n// Door is inbetween OPEN and CLOSE (in motion)\n// so pass \"Door in Motion\"\n{\n    var newMsg = { payload: \"Door in Motion\" };\n    return newMsg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 460,
+        "wires": [
+            [
+                "d8ab7d0f.8f883"
+            ]
+        ]
+    },
+    {
+        "id": "84ce2077.2ca64",
+        "type": "function",
+        "z": "6c0230dc.948c1",
+        "name": "Door OPEN to long?",
+        "func": "// Set the number of minutes you want to \n// allow the door to be OPEN before \n// sending out that it has been open\n// to long\nvar timeLimit = 30;\n\n\n// Get the current time (Hour and Minute)\n// Does NOT account rolling past midnight.\n// We just want to know the number of\n// minutes since midnight of the current\n// day\nvar d = new Date();\nvar tHour = d.getHours();\nvar tMin = d.getMinutes();\nvar timeCheck = (tHour * 60) + tMin;\n\n// Retrieve status of Door.  We want to \n// see if it is completly OPEN.\n// 1 = Door is OPEN\nvar isDoorOpen = flow.get(\"openStatus\");\n\n// Check the elapsed Time (number of minutes)\n// that the door has been OPEN\nvar elapsedTime = timeCheck - flow.get(\"timeOpen\");\n\n// If the door has been OPEN for \nif ((isDoorOpen == 1) && (elapsedTime > timeLimit))\n{\n    var newMsg = { payload: 1 };\n    return newMsg;\n}\nelse\n{\n    var newMsg = { payload: 0 };\n    return newMsg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "724fdc66.67e7e4"
+            ]
+        ]
+    },
+    {
+        "id": "1d79ebf0.ec4bf4",
+        "type": "inject",
+        "z": "6c0230dc.948c1",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "84ce2077.2ca64"
+            ]
+        ]
+    },
+    {
+        "id": "4e4d2cf1.45ff24",
+        "type": "debug",
+        "z": "6c0230dc.948c1",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 990,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "724fdc66.67e7e4",
+        "type": "switch",
+        "z": "6c0230dc.948c1",
+        "name": "Time Exceded",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 540,
+        "y": 340,
+        "wires": [
+            [
+                "91100739.cc9d38"
+            ]
+        ]
+    },
+    {
+        "id": "91100739.cc9d38",
+        "type": "function",
+        "z": "6c0230dc.948c1",
+        "name": "Send Door email",
+        "func": "// Reset timeOpen status so we only get \n// another email if additional \n// time exceeded occurs.\nvar d = new Date();\nvar tHour = d.getHours();\nvar tMin = d.getMinutes();\nvar timeOpen = (tHour * 60) + tMin;\nflow.set(\"timeOpen\",timeOpen);\n\n// Now set topic for emailed message\n//var newMsg = {payload: msg.topic = \"Garage door is OPEN!\"};\n\nvar newMsg = {payload: msg = \"Garage door is OPEN!\"};\n\n//msg.topic = \"Garage door is OPEN!\";\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 730,
+        "y": 340,
+        "wires": [
+            [
+                "4e4d2cf1.45ff24",
+                "24dd5f56.db6b7"
+            ]
+        ]
+    },
+    {
+        "id": "a62e8ce9.f8995",
+        "type": "mqtt out",
+        "z": "6c0230dc.948c1",
+        "name": "To ESP Board",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "10e13cb9.3e3033",
+        "x": 600,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d1c276bb.dfd9a8",
+        "type": "mqtt out",
+        "z": "b58cb79e.21c2b8",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "10e13cb9.3e3033",
+        "x": 1090,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "92d1e2fa.f54d8",
+        "type": "inject",
+        "z": "b58cb79e.21c2b8",
+        "name": "",
+        "topic": "toesp",
+        "payload": "{out4:1}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 150,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "223d5942.dcee86",
+        "type": "inject",
+        "z": "b58cb79e.21c2b8",
+        "name": "",
+        "topic": "toesp",
+        "payload": "{out4:0}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 150,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c4e9a18f.b610d",
+        "type": "inject",
+        "z": "b58cb79e.21c2b8",
+        "name": "",
+        "topic": "toesp",
+        "payload": "{in14?}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "x": 150,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4992634b.e4723c",
+        "type": "inject",
+        "z": "b58cb79e.21c2b8",
+        "name": "",
+        "topic": "garage/toesp",
+        "payload": "{temperature_port:0} ",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 170,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1e06654b.44e9ab",
+        "type": "inject",
+        "z": "b58cb79e.21c2b8",
+        "name": "",
+        "topic": "garage/toesp",
+        "payload": "{temp_type:6}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 200,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2dadd61d.b6d19a",
+        "type": "comment",
+        "z": "b58cb79e.21c2b8",
+        "name": "ESP Setup Instructions",
+        "info": "Use Pete's YAT terminal program.\nConnect your Wemos Mini to your \ncomputer, open YAT and connect to the\nboard.\n\nEnter the commands into YAT one at a time\nfor your particular setup (See page 11 \nand 12 of Petes documentation):\n\n{ssid:\"wififorus\"}\n{ssid2:\"wififorus\"}\n{pass:\"xxxxxxxxxxx\"}\n{pass2:\"xxxxxxxxxxx\"}\n{mqtt_host:\"192.168.1.19\"}\n{mqtt_user:\"xxxxxx\"}\n{mqtt_pass:\"xxxxxx\"}\n\nNOTE: If you change the ID to anything\n      other than \"garage\", you will need\n      to make sure to change the topics\n      under the Garage Door Flow for\n      the \"Garage\" button and\n      \"Complete OPEN\", and \n      \"Complete CLOSED\"\n      MQTT inputs\n      \n{id:”garage”}\n{desc:\"Garage Door\"}\n{rgb_ind:0}\n\nAlso per page 14 (Automatic Responses)\nto allow GPIO2 (D4 on Wemos Mini)\nto be used:\n{temperature_port:0} \n{temp_type:6}\n\nAnd if you would like ot set a \nmanual IP then (see page 66):\n{manual_ip:1,192,168,1,200,2} \n\nThen reset (reboot) the board:\n{reset}\n\n\n\nThe first set is to set your Wifi SSID and\npassword.\n\nNext group is to set the MQTT Broker\n\nThird set (Enabling GPI02) is so that you\ncan use GPI02 as an input. (On my Wemos Mini,\nit is D4)\n\nThe last group is for testing some of the pins\n",
+        "x": 300,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "141ee1c4.55426e",
+        "type": "inject",
+        "z": "b58cb79e.21c2b8",
+        "name": "",
+        "topic": "toesp",
+        "payload": "{id?}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 140,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ed234c92.03a7e",
+        "type": "mqtt in",
+        "z": "6c0230dc.948c1",
+        "name": "From ESP Board",
+        "topic": "fromesp",
+        "qos": "2",
+        "broker": "10e13cb9.3e3033",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "7291327d.6f737c"
+            ]
+        ]
+    },
+    {
+        "id": "534652f1.bafb7c",
+        "type": "inject",
+        "z": "b58cb79e.21c2b8",
+        "name": "",
+        "topic": "toesp",
+        "payload": "{desc?}",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 150,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e3b84165.ecd95",
+        "type": "comment",
+        "z": "b58cb79e.21c2b8",
+        "name": "Testing injects",
+        "info": "",
+        "x": 140,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "24d64545.7a87ba",
+        "type": "comment",
+        "z": "b58cb79e.21c2b8",
+        "name": "Set to enable use of GPIO2 as input",
+        "info": "Make sure to do this AFTER \nsetting the ID of the ESP8266\n\nThese should have been done as part of the\n\"ESP Setup instructions\" on this flow.\n\n",
+        "x": 200,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "6afc38.2316b3c8",
+        "type": "comment",
+        "z": "b58cb79e.21c2b8",
+        "name": "General queries",
+        "info": "Responses will typically show up under \nthe topic of:\n\ngarage/fromesp\n\nin MQTT",
+        "x": 140,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "aa608d0.2d81b7",
+        "type": "comment",
+        "z": "b58cb79e.21c2b8",
+        "name": "NOTE - Double click on \"ESP Setup Instructions\" for FULL instruction list",
+        "info": "",
+        "x": 330,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9da0fc84.62652",
+        "type": "comment",
+        "z": "6c0230dc.948c1",
+        "name": "Email Setup",
+        "info": "Be sure to set your email information \nup so that you will receive emails\nif the door remains open for an \nextended period.",
+        "x": 970,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "5f5d7b51.0f3a14",
+        "type": "comment",
+        "z": "6c0230dc.948c1",
+        "name": "Set Interval in \"Door OPEN to long\" function",
+        "info": "Double click on the \"Door OPEN to Long?\"\nfunction and in line 5, find the value\n\"timeLimit\".  Change it to the number \nof minutes you wish to wait with the \ngarage door OPEN before you send yourself\nan email.\n\nCurrent setting is 30 minutes.",
+        "x": 390,
+        "y": 280,
+        "wires": []
+    }
+]
